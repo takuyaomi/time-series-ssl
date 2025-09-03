@@ -1,0 +1,18 @@
+seed: 42
+data_root: ./time-series-ssl/data/har
+model:
+  d_model: 256
+  n_heads: 4
+  depth: 4
+  patch_len: 32
+  stride: 16
+ssl:
+  order_shuffle_rate:
+    weak: 0.2
+    strong: 0.6
+  channel_jitter: 0.1
+train:
+  epochs: 50
+  batch_size: 128
+  optimizer: {name: adamw, lr: 0.001, weight_decay: 0.05}
+  scheduler: {name: cosine, warmup_pct: 0.1}
